@@ -18,7 +18,7 @@ after_success:
   - docker build -t sagarbhp/multi-worker ./worker
   # Push to docker hub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push agarbhp/multi-client
-  - docker push agarbhp/multi-nginx
-  - docker push agarbhp/multi-server
-  - docker push agarbhp/multi-worker
+  - docker push sagarbhp/multi-client
+  - docker push sagarbhp/multi-nginx
+  - docker push sagarbhp/multi-server
+  - docker push sagarbhp/multi-worker
