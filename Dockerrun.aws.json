@@ -1,27 +1,31 @@
 {
-    "AWSEBDockerrunVersion": 3,
+    "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
         {
             "name": "client",
             "image": "sagarbhp/multi-client",
             "hostname": "client",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "server",
             "image": "sagarbhp/multi-server",
             "hostname": "api",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "worker",
             "image": "sagarbhp/multi-worker",
             "hostname": "worker",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },{
             "name": "nginx",
             "image": "sagarbhp/multi-nginx",
             "essential": true,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 80,
