@@ -8,7 +8,7 @@ function Landing() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Link to="/home">Home</Link>
+        <Link to="/home">Homeeeee</Link>
         <Link to="/otherpage">Other Page</Link>
         <a
           className="App-link"
