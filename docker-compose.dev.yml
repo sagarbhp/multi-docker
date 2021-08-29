@@ -10,7 +10,12 @@ services:
     image: 'redis:latest'
   
   api:
-    image: sagarbhp/multi-server
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes:
+      - /app/node_modules
+      - ./server:/app
     environment: 
       - REDIS_HOST=redis
       - REDIS_PORT=6379
@@ -21,10 +26,20 @@ services:
       - PG_PORT=5432
   
   client:
-    image: sagarbhp/multi-client
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes: 
+      - /app/node_modules
+      - ./client:/app
   
   worker:
-    image: sagarbhp/multi-worker
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./worker
+    volumes: 
+      - /app/node_modules
+      - ./worker:/app
     environment: 
       - REDIS_HOST=redis
       - REDIS_PORT=6379
@@ -35,7 +50,7 @@ services:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-      - "80:80"
+      - "3050:80"
     depends_on: 
       - api
       - client
